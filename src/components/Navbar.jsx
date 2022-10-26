@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-scroll";
 
 export default function Navbar() {
   const [isShownMobileMenu, setIsShownMobileMenu] = useState(false);
@@ -52,39 +53,70 @@ export default function Navbar() {
                   Home
                 </a>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
-                >
-                  A propos
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
-                >
-                  Ateliers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block bg-gray-100 border border-black py-2 pr-4 pl-3 rounded md:bg-transparent md:text-gray-100 md:px-8"
-                  aria-current="page"
-                >
-                  Contact
-                </a>
-              </li>
+              <Link
+                className="cursor-pointer text-center bg-primary"
+                to="about"
+                spy={true}
+                smooth={true}
+              >
+                <li>
+                  <a
+                    href="#"
+                    className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
+                  >
+                    A propos
+                  </a>
+                </li>
+              </Link>
+
+              <Link
+                className="cursor-pointer text-center bg-primary"
+                to="workshops"
+                spy={true}
+                smooth={true}
+              >
+                <li>
+                  <a
+                    href="#"
+                    className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
+                  >
+                    Ateliers
+                  </a>
+                </li>
+              </Link>
+
+              <Link
+                className="cursor-pointer text-center bg-primary"
+                to="blog"
+                spy={true}
+                smooth={true}
+              >
+                <li>
+                  <a
+                    href="#"
+                    className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
+                  >
+                    Blog
+                  </a>
+                </li>
+              </Link>
+
+              <Link
+                className="cursor-pointer text-center bg-primary"
+                to="contact"
+                spy={true}
+                smooth={true}
+              >
+                <li>
+                  <a
+                    href="#"
+                    className="block bg-gray-100 border border-black py-2 pr-4 pl-3 rounded md:bg-transparent md:text-gray-100 md:px-8"
+                    aria-current="page"
+                  >
+                    Contact
+                  </a>
+                </li>
+              </Link>
             </ul>
           </div>
         </div>
