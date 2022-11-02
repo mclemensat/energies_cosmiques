@@ -44,11 +44,19 @@ export default function Navbar() {
         </a>
         <div className={isShownMobileMenu ? "flex" : "hidden md:flex"}>
           <div className="md:flex md:w-full md:justify-center md:mt-20">
-            <ul className="flex flex-col pr-4 w-56 text-2xl rounded-lg md:flex-row md:w-auto md:space-x-8 md:text-lg md:font-medium md:border-0 lg:text-2xl">
+            <ul className="flex flex-col pr-4 w-96 text-2xl rounded-lg md:flex-row md:w-auto md:space-x-8 md:text-lg md:font-medium md:border-0 lg:text-2xl">
+            <li>
+                <a
+                  href="#"
+                  className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
+                >
+                  Admin
+                </a>
+              </li>
               <li>
                 <a
                   href="#"
-                  className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
+                  className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
                 >
                   Home
                 </a>
@@ -62,8 +70,7 @@ export default function Navbar() {
                 <li>
                   <a
                     href="#"
-                    className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
-                  >
+                    className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8">
                     A propos
                   </a>
                 </li>
@@ -78,8 +85,7 @@ export default function Navbar() {
                 <li>
                   <a
                     href="#"
-                    className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
-                  >
+                    className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8">
                     Ateliers
                   </a>
                 </li>
@@ -94,8 +100,7 @@ export default function Navbar() {
                 <li>
                   <a
                     href="#"
-                    className="block bg-gray-100 border border-black py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
-                  >
+                    className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8">
                     Blog
                   </a>
                 </li>
@@ -110,7 +115,7 @@ export default function Navbar() {
                 <li>
                   <a
                     href="#"
-                    className="block bg-gray-100 border border-black py-2 pr-4 pl-3 rounded md:bg-transparent md:text-gray-100 md:px-8"
+                    className="block bg-gray-100 border py-3 pr-4 pl-3 rounded md:bg-transparent md:text-gray-100 md:px-8"
                     aria-current="page"
                   >
                     Contact
