@@ -1,6 +1,16 @@
+import { useState } from "react";
+
+import BookingModal from "./BookingModal";
+
 export default function WorkshopsCards() {
+  const [isShowBookingForm, setIsShowBookingForm] = useState(false);
+
+  const handleClick = () => {
+    setIsShowBookingForm(!isShowBookingForm);
+  };
+
   return (
-    <div className="flex flex-col items-center md:flex-row md:justify-evenly">
+    <div className="flex flex-col text-xl items-center md:flex-row md:justify-evenly">
       <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md mb-8">
         <a href="#">
           <img
@@ -11,7 +21,7 @@ export default function WorkshopsCards() {
         </a>
         <div className="p-5">
           <a href="#">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+            <h5 className="mb-2 text-3xl font-semibold tracking-tight text-gray-900">
               Atelier lorem
             </h5>
           </a>
@@ -30,12 +40,12 @@ export default function WorkshopsCards() {
           </a>
           <br></br>
           <div className="flex justify-center">
-            <a
-              href="#"
-              className="py-2 px-3 text-sm font-medium text-center text-white bg-[#D7BFA8] rounded-lg hover:bg-[#DAB99A] focus:outline-none"
+            <button
+              onClick={handleClick}
+              className="mt-6 mt-2 py-2 px-5 font-medium text-center text-white bg-[#D7BFA8] rounded-lg hover:bg-[#DAB99A] focus:outline-none"
             >
               Réserver
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -50,7 +60,7 @@ export default function WorkshopsCards() {
         </a>
         <div className="p-5">
           <a href="#">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+            <h5 className="mb-2 text-3xl font-semibold tracking-tight text-gray-900">
               Atelier ipsum
             </h5>
           </a>
@@ -69,12 +79,12 @@ export default function WorkshopsCards() {
           </a>
           <br></br>
           <div className="flex justify-center">
-            <a
-              href="#"
-              className="py-2 px-3 text-sm font-medium text-center text-white bg-[#D7BFA8] rounded-lg hover:bg-[#DAB99A] focus:outline-none"
+            <button
+              onClick={handleClick}
+              className="mt-6 py-2 px-5 font-medium text-center text-white bg-[#D7BFA8] rounded-lg hover:bg-[#DAB99A] focus:outline-none"
             >
               Réserver
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -89,7 +99,7 @@ export default function WorkshopsCards() {
         </a>
         <div className="p-5">
           <a href="#">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+            <h5 className="mb-2 text-3xl font-semibold tracking-tight text-gray-900">
               Atelier relaxation
             </h5>
           </a>
@@ -108,13 +118,14 @@ export default function WorkshopsCards() {
           </a>
           <br></br>
           <div className="flex justify-center">
-            <a
-              href="#"
-              className="py-2 px-3 text-sm font-medium text-center text-white bg-[#D7BFA8] rounded-lg hover:bg-[#DAB99A] focus:outline-none"
+            <button
+              onClick={handleClick}
+              className="mt-6 py-2 px-5 font-medium text-center text-white bg-[#D7BFA8] rounded-lg hover:bg-[#DAB99A] focus:outline-none"
             >
               Réserver
-            </a>
+            </button>
           </div>
+          {isShowBookingForm ? <BookingModal onClick={handleClick} /> : ""}
         </div>
       </div>
     </div>

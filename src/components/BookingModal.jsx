@@ -4,7 +4,6 @@ import Calendar from "react-calendar";
 export default function BookingModal({ onClick }) {
   const [showModal, setShowModal] = useState(false);
   const [chosenDate, onChange] = useState(new Date());
-  console.log('rfezqds', chosenDate)
   const [participantsNumber, setParticipantsNumber] = useState(0);
 
   const handleSubmit = (e) => {
