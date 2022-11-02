@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Navbar from "../components/Navbar";
-import BookingModal from "frontend/src/components/BookingModal";
+import BookingModal from "../components/BookingModal";
 import About from "./About";
 import Workshops from "./Workshops";
 import Contact from "./Contact";

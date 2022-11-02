@@ -1,4 +1,4 @@
-import WorkshopsCards from "frontend/src/components/WorkshopsCards";
+import WorkshopsCards from "../components/WorkshopsCards";
 
 export default function Workshops() {
   return (
