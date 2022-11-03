@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <div>
       <div className="bg-[url(@assets/zen.jpg)] bg-cover min-h-screen w-screen">
-        <Navbar />
         <h1 className="text-5xl mt-[10%] text-right mr-[15%]">
           Energies cosmiques
         </h1>
