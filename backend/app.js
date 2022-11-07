@@ -1,14 +1,21 @@
 const router = require("./src/router");
-const express = require('express');
-const cookieParser = require('cookie-parser')
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const app = express();
 
 const port = process.env.APP_PORT || 5000;
 
-app.use(express.json());
-app.use(cookieParser())
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 
+app.use(express.json());
+app.use(cookieParser());
 
 app.use(router);
 

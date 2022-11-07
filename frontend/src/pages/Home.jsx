@@ -1,13 +1,22 @@
 import { useState } from "react";
 
-import Navbar from "../components/Navbar";
 import BookingModal from "../components/BookingModal";
 import About from "./About";
 import Workshops from "./Workshops";
 import Contact from "./Contact";
 
 export default function Home() {
+  const [isShowLogin, setIsShowLogin] = useState(false);
+  const [currentUser, setCurrentUser] = useState("");
   const [isShowBookingForm, setIsShowBookingForm] = useState(false);
+
+  const handleLoginClick = () => {
+    setIsShowLogin(() => !isShowLogin);
+  };
+
+    const getLoginContext = () => {
+    return { currentUser, setCurrentUser };
+  };
 
   const handleClick = () => {
     setIsShowBookingForm(!isShowBookingForm);

@@ -1,19 +1,25 @@
-const connection = require('../../db-config');
-const Joi = require('joi');
-const argon2 = require('argon2');
+const connection = require("../../db-config");
+const Joi = require("joi");
+const argon2 = require("argon2");
 
 const db = connection.promise();
 
 const validate = (data, forCreation = true) => {
-  const presence = forCreation ? 'required' : 'optional';
+  const presence = forCreation ? "required" : "optional";
   return Joi.object({
-    nickname: Joi.string().email().max(255).presence(presence),
-    password: Joi.string().min(8).max(50).presence(presence),
+    username: Joi.string().min(5).max(50).presence(presence),
+    password: Joi.string().min(5).max(50).presence(presence),
   }).validate(data, { abortEarly: false }).error;
 };
 
+const login = (username) => {
+  return db
+  .query("SELECT * FROM users WHERE username = ?", [username])
+  .then(([results]) => results[0]);
+}
+
 const findMany = () => {
-  let sql = 'SELECT id, nickname FROM users';
+  let sql = "SELECT id, username FROM users";
   const sqlValues = [];
 
   return db.query(sql, sqlValues).then(([results]) => results);
@@ -21,34 +27,31 @@ const findMany = () => {
 
 const findOne = (id) => {
   return db
-    .query(
-      'SELECT id, nickname FROM users WHERE id = ?',
-      [id]
-    )
+    .query("SELECT id, username FROM users WHERE id = ?", [id])
     .then(([results]) => results[0]);
 };
 
-const create = ({ nickname, password }) => {
+const create = ({ username, password }) => {
   return hashPassword(password).then((hashedPassword) => {
     return db
-      .query('INSERT INTO users SET ?', {
-        nickname,
+      .query("INSERT INTO users SET ?", {
+        username,
         hashedPassword,
       })
       .then(([result]) => {
         const id = result.insertId;
-        return { nickname, id };
+        return { username, id };
       });
   });
 };
 
 const update = (id, newAttributes) => {
-  return db.query('UPDATE users SET ? WHERE id = ?', [newAttributes, id]);
+  return db.query("UPDATE users SET ? WHERE id = ?", [newAttributes, id]);
 };
 
 const destroy = (id) => {
   return db
-    .query('DELETE FROM users WHERE id = ?', [id])
+    .query("DELETE FROM users WHERE id = ?", [id])
     .then(([result]) => result.affectedRows !== 0);
 };
 
@@ -68,6 +71,7 @@ const verifyPassword = (plainPassword, hashedPassword) => {
 };
 
 module.exports = {
+  login,
   findMany,
   findOne,
   validate,

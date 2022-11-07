@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-scroll";
 import LoginForm from "./LoginForm";
+import LoginContext from "@contexts/LoginContext";
 
 export default function Navbar({ handleLoginClick }) {
-  //const { currentUser } = useContext(LoginContext);
+  const { currentUser } = useContext(LoginContext);
   const [isShownMobileMenu, setIsShownMobileMenu] = useState(false);
   const [isShowLogin, setIsShowLogin] = useState(false)
 
@@ -51,6 +52,7 @@ export default function Navbar({ handleLoginClick }) {
         </a>
         <div className={isShownMobileMenu ? "flex" : "hidden md:flex"}>
           <div className="md:flex md:w-full md:justify-center md:mt-20">
+            <h3 className="text-red-800">{currentUser?.username}</h3>
             <ul className="flex flex-col pr-4 w-96 text-2xl rounded-lg md:flex-row md:w-auto md:space-x-8 md:text-lg md:font-medium md:border-0 lg:text-2xl">
             <li>
                 <button
@@ -58,10 +60,10 @@ export default function Navbar({ handleLoginClick }) {
                   onClick={handleAdminClick}
                 >
                   Admin
+                </button>
                   <div className={isShowLogin ? "flex" : "hidden"}>
                   <LoginForm />
                   </div>
-                </button>
               </li>
               <li>
                 <a

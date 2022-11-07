@@ -1,6 +1,17 @@
 const router = require('express').Router();
 const User = require('./models/user');
 
+router.post('/login', (req, res) => {
+  User.login()
+  .then((results) => {
+    res.json(results);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Login error');
+  });
+})
+
 router.get('/', (req, res) => {
   User.findMany()
     .then((results) => {
@@ -25,11 +36,11 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { nickname } = req.body;
+  const { username } = req.body;
   let validationErrors = null;
-  User.findByNickname(nickname)
-    .then((existingUserWithNickname) => {
-      if (existingUserWithNickname) return Promise.reject('DUPLICATE_USER');
+  User.findByNickname(username)
+    .then((existingUserWithUsername) => {
+      if (existingUserWithUsername) return Promise.reject('DUPLICATE_USER');
       validationErrors = User.validate(req.body);
       if (validationErrors) return Promise.reject('INVALID_DATA');
       return User.create(req.body);
