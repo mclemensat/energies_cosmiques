@@ -1,15 +1,15 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import Home from "@pages/Home";
 import LoginForm from "@components/LoginForm";
-import LoginContext from "@contexts/LoginContext";
 import Navbar from "./components/Navbar";
+
+import LoginContext from "@contexts/LoginContext";
 
 import "./App.css";
 
 function App() {
-  const [loader, setLoader] = useState(true);
   const [isShowLogin, setIsShowLogin] = useState(false);
 
   const [currentUser, setCurrentUser] = useState("");
@@ -28,7 +28,11 @@ function App() {
         <LoginContext.Provider value={getLoginContext()}>
         <Navbar
             handleLoginClick={handleLoginClick}
+            currentUser={currentUser}
           />
+
+          {!currentUser && <LoginForm isShowLogin={isShowLogin} setIsShowLogin={setIsShowLogin} />}
+
           <main>
               <Routes>
                 <Route path="/" element={<Home />} />

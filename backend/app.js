@@ -1,6 +1,6 @@
 const router = require("./src/router");
 const express = require("express");
-const cookieParser = require("cookie-parser");
+const session = require('express-session');
 const cors = require("cors");
 
 const app = express();
@@ -14,8 +14,13 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+
 app.use(express.json());
-app.use(cookieParser());
 
 app.use(router);
 

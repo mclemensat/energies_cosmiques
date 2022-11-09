@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { login } from "@services/api";
 import LoginContext from "@contexts/LoginContext";
 
-export default function LoginForm({ isShowLogin }) {
+export default function LoginForm({ setIsShowLogin, isShowLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,16 +14,19 @@ export default function LoginForm({ isShowLogin }) {
 
     try {
       setCurrentUser(await login({ username, password }));
+      setIsShowLogin(!isShowLogin)
+      console.log('hello,', username)
     } catch (err) {
       alert(err.message);
     }
   };
 
   return (
+    <div className="absolute ml-[15%]">
     <div
       className={`${
-        !isShowLogin ? "active" : ""
-      } show z-50 border-black border-2 rounded-3xl bg-zinc-50`}
+        isShowLogin ? "" : "hidden"
+      } flex justify-center z-50 w-56 border-black border-2 rounded-3xl`}
     >
       <div className="login-form">
         <div className="form-box solid">
@@ -72,6 +75,7 @@ export default function LoginForm({ isShowLogin }) {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

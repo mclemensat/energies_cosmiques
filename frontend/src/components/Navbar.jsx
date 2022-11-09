@@ -1,20 +1,19 @@
 import { useState, useContext } from "react";
 import { Link } from "react-scroll";
-import LoginForm from "./LoginForm";
+
 import LoginContext from "@contexts/LoginContext";
 
 export default function Navbar({ handleLoginClick }) {
   const { currentUser } = useContext(LoginContext);
   const [isShownMobileMenu, setIsShownMobileMenu] = useState(false);
-  const [isShowLogin, setIsShowLogin] = useState(false)
 
   const handleClick = () => {
     setIsShownMobileMenu(!isShownMobileMenu);
   };
 
   const handleAdminClick = () => {
-    setIsShowLogin(!isShowLogin);
-  };
+    handleLoginClick();
+  }
 
   return (
     <nav className="px-4 sm:px-4 rounded">
@@ -51,20 +50,23 @@ export default function Navbar({ handleLoginClick }) {
           />
         </a>
         <div className={isShownMobileMenu ? "flex" : "hidden md:flex"}>
-          <div className="md:flex md:w-full md:justify-center md:mt-20">
-            <h3 className="text-red-800">{currentUser?.username}</h3>
+          <div className="md:flex md:justify-center md:mt-20">
             <ul className="flex flex-col pr-4 w-96 text-2xl rounded-lg md:flex-row md:w-auto md:space-x-8 md:text-lg md:font-medium md:border-0 lg:text-2xl">
+            {!currentUser && ( 
             <li>
                 <button
+                  id="login"
+                  type="button"
                   className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
                   onClick={handleAdminClick}
                 >
                   Admin
                 </button>
-                  <div className={isShowLogin ? "flex" : "hidden"}>
-                  <LoginForm />
-                  </div>
               </li>
+              )}
+            {currentUser ? ( 
+            <h3 className="text-red-800">Hello {currentUser?.username}</h3>
+            ) : (" ")}
               <li>
                 <a
                   href="#"
