@@ -19,23 +19,13 @@ const hashingOptions = {
   parallelism: 1,
 };
 
-const hashPassword = (plainPassword) => {
-  return argon2.hash(plainPassword, hashingOptions);
-};
-
-const verifyPassword = (plainPassword, hashedPassword) => {
-  return argon2.verify(hashedPassword, plainPassword, hashingOptions);
-};
-
-const findByUser = (username) => {
+const findByUser = (username, password) => {
   return db
-    .query("SELECT * FROM users WHERE username = ?", [username])
-    .then(([results]) => results[0]);
+  .query ("SELECT * FROM users WHERE username = ? AND password = ?", [username, password])
+  .then(([results]) => results[0]);
 };
 
 module.exports = {
   validate,
-  hashPassword,
-  verifyPassword,
   findByUser,
 };
