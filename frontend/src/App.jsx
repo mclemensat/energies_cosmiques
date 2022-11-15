@@ -26,17 +26,23 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <LoginContext.Provider value={getLoginContext()}>
-        <Navbar
-            handleLoginClick={handleLoginClick}
-            currentUser={currentUser}
-          />
+          <div className="bg-[url(@assets/zen.jpg)] bg-cover min-h-screen w-screen">
+            <Navbar
+              handleLoginClick={handleLoginClick}
+              currentUser={currentUser}
+            />
 
-          {!currentUser && <LoginForm isShowLogin={isShowLogin} setIsShowLogin={setIsShowLogin} />}
-
+            {!currentUser && (
+              <LoginForm
+                isShowLogin={isShowLogin}
+                setIsShowLogin={setIsShowLogin}
+              />
+            )}
+          </div>
           <main>
-              <Routes>
-                <Route path="/" element={<Home />} />
-              </Routes>
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
           </main>
         </LoginContext.Provider>
       </BrowserRouter>

@@ -1,45 +1,23 @@
 import { useState } from "react";
 
-import BookingModal from "../components/BookingModal";
 import About from "./About";
 import Workshops from "./Workshops";
+import Blog from "./Blog";
 import Contact from "./Contact";
 
 export default function Home() {
   const [isShowLogin, setIsShowLogin] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
-  const [isShowBookingForm, setIsShowBookingForm] = useState(false);
-
   const handleLoginClick = () => {
     setIsShowLogin(() => !isShowLogin);
   };
 
-    const getLoginContext = () => {
+  const getLoginContext = () => {
     return { currentUser, setCurrentUser };
-  };
-
-  const handleClick = () => {
-    setIsShowBookingForm(!isShowBookingForm);
   };
 
   return (
     <div>
-      <div className="bg-[url(@assets/zen.jpg)] bg-cover min-h-screen w-screen">
-        <h1 className="text-5xl mt-[10%] text-right mr-[15%]">
-          Energies cosmiques
-        </h1>
-        <div className="text-2xl mt-10 text-right mr-[20%]">
-          <button
-            onClick={handleClick}
-            className="text-white font-light bg-[#D7BFA8] border border-[#A4978F] rounded-lg py-3 px-6"
-          >
-            {" "}
-            Réserver un atelier{" "}
-          </button>
-          {isShowBookingForm ? <BookingModal onClick={handleClick} /> : ""}
-        </div>
-      </div>
-
       <div className="mt-4 mx-4 sm:mb-20 md:mb-28">
         <h2
           className="text-3xl md:text-4xl lg:text-5xl mb-12 text-center"
@@ -68,6 +46,7 @@ export default function Home() {
         >
           Blog
         </h2>
+        <Blog />
       </div>
 
       <div className="bg-[url(@assets/contact-bg.jpg)] bg-cover min-h-screen w-screen">
