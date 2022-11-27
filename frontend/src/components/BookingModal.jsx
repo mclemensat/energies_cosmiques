@@ -1,7 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
+
+import { getWorkshopById } from "@services/api";
+
 import Calendar from "react-calendar";
 
 export default function BookingModal({ onClick }) {
+  const [queryString] = useSearchParams();
+
+  const [workshop, setWorkshop] = useState({});
+
+  useEffect(() => {
+    const loadData = async () => {
+      const id = queryString.get("id");
+      const result = await getWorkshopById(id);
+
+      setWorkshop(result);
+    };
+
+    loadData();
+  }, []);
+
   const [showModal, setShowModal] = useState(false);
   const [chosenDate, onChange] = useState(new Date());
   const [participantsNumber, setParticipantsNumber] = useState(0);
@@ -46,6 +65,7 @@ export default function BookingModal({ onClick }) {
               <h3 className="mb-4 text-3xl font-medium text-secondary text-center">
                 Réserver un atelier
               </h3>
+              <h4 className="mb-4 text-lg">{workshop.title}</h4>
 
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>

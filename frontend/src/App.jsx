@@ -8,6 +8,9 @@ import Navbar from "./components/Navbar";
 import LoginContext from "@contexts/LoginContext";
 
 import "./App.css";
+import BlogArticle from "./pages/BlogArticle";
+// import BookingModal from "./components/BookingModal";
+import WorkshopDescription from "./pages/WorkshopDescription";
 
 function App() {
   const [isShowLogin, setIsShowLogin] = useState(false);
@@ -26,7 +29,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <LoginContext.Provider value={getLoginContext()}>
-          <div className="bg-[url(@assets/zen.jpg)] bg-cover min-h-screen w-screen">
+          <div className="bg-[url(@assets/marion.jpg)] bg-cover bg-[100%] bg-no-repeat min-h-screen w-screen">
             <Navbar
               handleLoginClick={handleLoginClick}
               currentUser={currentUser}
@@ -42,6 +45,9 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/posts" element={<BlogArticle />} />
+              {/* <Route path="/workshops" element={<BookingModal />} /> */}
+              <Route path="/workshops" element={<WorkshopDescription />} />
             </Routes>
           </main>
         </LoginContext.Provider>

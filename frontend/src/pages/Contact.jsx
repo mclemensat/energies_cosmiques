@@ -1,7 +1,7 @@
 export default function Contact() {
   return (
     <div>
-      <div className="flex flex-col ml-[50%] py-[15%] lg:py-[12%]">
+      <div className="flex flex-col  text-slate-300 ml-[35%] md:ml-[50%] py-[18%] lg:py-[8%]">
         <h3 className="text-4xl lg:text-5xl">Energies cosmiques</h3>
         <h4 className="text-3xl my-4 lg:text-4xl">Marion Patou</h4>
 

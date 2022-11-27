@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-scroll";
 
 import LoginContext from "@contexts/LoginContext";
-import BookingModal from "../components/BookingModal";
+// import BookingModal from "../components/BookingModal";
 
 export default function Navbar({ handleLoginClick }) {
   const { currentUser } = useContext(LoginContext);
@@ -28,7 +28,7 @@ export default function Navbar({ handleLoginClick }) {
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            className="mt-4 mr-3 text-sm text-neutral-800 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            className="bg-[#1F2411] mt-4 mr-3 text-sm text-slate-200 rounded-lg border-[3px] border-[#1F2411] md:hidden focus:outline-none"
             aria-controls="navbar-default"
             aria-expanded="false"
             onClick={handleClick}
@@ -48,27 +48,20 @@ export default function Navbar({ handleLoginClick }) {
             </svg>
           </button>
         </div>
-        <div className="flex justify-between">
-          <a href="https://flowbite.com/" className="flex items-center">
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="mr-3 h-6 sm:h-9"
-              alt="Flowbite Logo"
-            />
-          </a>
+        <div className="flex justify-end md:justify-between">
           <div className={isShownMobileMenu ? "flex" : "hidden md:flex"}>
-            <div className="md:flex md:justify-center md:mt-20">
-              <ul className="flex flex-col pr-4 w-96 text-2xl rounded-lg md:flex-row md:w-auto md:space-x-8 md:text-lg md:font-medium md:border-0 lg:text-2xl">
+            <div className="md:flex md:justify-center">
+              <ul className="backdrop-blur-md flex flex-col pr-4 w-80 rounded-lg md:bg-[#1F2411] md:flex-row md:w-auto md:space-x-8 md:text-lg md:font-medium md:border-0 lg:text-2xl">
                 {!currentUser && (
                   <li>
-                    <button
+                    <a
                       id="login"
                       type="button"
-                      className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
+                      className="cursor-pointer h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
                       onClick={handleAdminClick}
                     >
                       Admin
-                    </button>
+                    </a>
                   </li>
                 )}
                 {currentUser ? (
@@ -81,13 +74,13 @@ export default function Navbar({ handleLoginClick }) {
                 <li>
                   <a
                     href="#"
-                    className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
+                    className="h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
                   >
                     Home
                   </a>
                 </li>
                 <Link
-                  className="cursor-pointer text-center bg-primary"
+                  className="cursor-pointer"
                   to="about"
                   spy={true}
                   smooth={true}
@@ -95,15 +88,15 @@ export default function Navbar({ handleLoginClick }) {
                   <li>
                     <a
                       href="#"
-                      className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
-                    >
+                      className="h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
+                      >
                       A propos
                     </a>
                   </li>
                 </Link>
 
                 <Link
-                  className="cursor-pointer text-center bg-primary"
+                  className="cursor-pointer"
                   to="workshops"
                   spy={true}
                   smooth={true}
@@ -111,15 +104,15 @@ export default function Navbar({ handleLoginClick }) {
                   <li>
                     <a
                       href="#"
-                      className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
-                    >
+                      className="h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
+                      >
                       Ateliers
                     </a>
                   </li>
                 </Link>
 
                 <Link
-                  className="cursor-pointer text-center bg-primary"
+                  className="cursor-pointer"
                   to="blog"
                   spy={true}
                   smooth={true}
@@ -127,15 +120,15 @@ export default function Navbar({ handleLoginClick }) {
                   <li>
                     <a
                       href="#"
-                      className="h-16 text-center block bg-gray-100 border py-3 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:bg-transparent md:border-0 md:hover:text-blue-700 md:px-8"
-                    >
+                      className="h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
+                      >
                       Blog
                     </a>
                   </li>
                 </Link>
 
                 <Link
-                  className="cursor-pointer text-center bg-primary"
+                  className="cursor-pointer text-center"
                   to="contact"
                   spy={true}
                   smooth={true}
@@ -143,7 +136,7 @@ export default function Navbar({ handleLoginClick }) {
                   <li>
                     <a
                       href="#"
-                      className="block bg-gray-100 border py-3 pr-4 pl-3 rounded md:bg-transparent md:text-gray-100 md:px-8"
+                      className="h-16 text-center block border-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
                       aria-current="page"
                     >
                       Contact
@@ -156,22 +149,29 @@ export default function Navbar({ handleLoginClick }) {
         </div>
       </nav>
       <div className="">
-        <h1 className="text-5xl mt-[10%] text-right mr-[15%]">
+        <h1 className="text-5xl text-slate-300 mt-[20%] ml-[55%] md:text-6xl md:mt-[10%] md:ml-[15%]">
           Energies cosmiques
         </h1>
-        <div className="text-2xl mt-10 text-right mr-[20%]">
-          <button
-            onClick={handleBookingClick}
-            className="text-white font-light bg-[#D7BFA8] border border-[#A4978F] rounded-lg py-3 px-6"
+        <div className="text-2xl mt-10 ml-[55%] md:ml-[20%]">
+          <Link
+            className="cursor-pointer text-center bg-primary"
+            to="workshops"
+            spy={true}
+            smooth={true}
           >
-            {" "}
-            Réserver un atelier{" "}
-          </button>
-          {isShownBookingForm ? (
+            <button
+              // onClick={handleBookingClick}
+              className="text-white font-light bg-[#D7BFA8] border border-[#A4978F] rounded-lg py-3 px-6"
+            >
+              {" "}
+              Réserver un atelier{" "}
+            </button>
+          </Link>
+          {/* {isShownBookingForm ? (
             <BookingModal onClick={handleBookingClick} />
           ) : (
             ""
-          )}
+          )} */}
         </div>
       </div>
     </div>

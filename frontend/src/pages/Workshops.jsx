@@ -1,14 +1,25 @@
+import { useState, useEffect } from "react";
+
 import WorkshopsCards from "../components/WorkshopsCards";
+import { getWorkshops } from "@services/api";
 
 export default function Workshops() {
+  const [workshops, setWorkshops] = useState([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const result = await getWorkshops();
+      setWorkshops(result);
+    };
+
+    loadData();
+  }, []);
+
   return (
-    <div>
-      <p className="mb-10 text-2xl">
-        Lorem ipsum dolor sit amet. Aut dolore dolore et asperiores adipisci aut
-        numquam iusto est quas. Est ratione placeat ut culpa nihil non saepe
-        mollitia eos dolores...
-      </p>
-      <WorkshopsCards />
+    <div className="flex flex-col text-xl items-center lg:flex-row md:justify-evenly">
+      {workshops.map((workshop, id) => (
+        <WorkshopsCards key={id} id={id} workshop={workshop} />
+      ))}
     </div>
   );
 }
