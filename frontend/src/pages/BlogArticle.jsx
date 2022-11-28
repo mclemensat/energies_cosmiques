@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { getPostById } from "@services/api";
 
 export default function BlogArticle() {
+  const navigate = useNavigate();
+
+  const handleBackButton = () => {
+    navigate(-1);
+  };
+
   const [queryString] = useSearchParams();
 
   const [post, setPost] = useState({});
@@ -20,8 +26,13 @@ export default function BlogArticle() {
   }, []);
 
   return (
-    <div className="bg-[url(@assets/contact-bg.jpg)] bg-cover min-h-screen w-screen">
+    <div>
       <br></br>
+      <button onClick={() => handleBackButton()}>
+        <span className="ml-12 text-2xl">
+          <i className="fa-solid fa-arrow-left-long"></i> Retour
+        </span>
+      </button>
       <div className="bg-slate-100 mt-12 m-[20%] rounded-b-xl">
         <img src={post.imgUrl} alt="" />
         <p className="py-6 pl-8 text-lg bg-slate-200">{post.theme}</p>

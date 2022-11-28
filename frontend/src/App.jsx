@@ -2,8 +2,6 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import React, { useState } from "react";
 
 import Home from "@pages/Home";
-import LoginForm from "@components/LoginForm";
-import Navbar from "./components/Navbar";
 
 import LoginContext from "@contexts/LoginContext";
 
@@ -29,27 +27,22 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <LoginContext.Provider value={getLoginContext()}>
-          <div className="bg-[url(@assets/marion.jpg)] bg-cover bg-[100%] bg-no-repeat min-h-screen w-screen">
-            <Navbar
-              handleLoginClick={handleLoginClick}
-              currentUser={currentUser}
-            />
-
-            {!currentUser && (
-              <LoginForm
-                isShowLogin={isShowLogin}
-                setIsShowLogin={setIsShowLogin}
-              />
-            )}
-          </div>
-          <main>
+          <div>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route
+                path="/"
+                element={
+                  <Home
+                    handleLoginClick={handleLoginClick}
+                    currentUser={currentUser}
+                  />
+                }
+              />
               <Route path="/posts" element={<BlogArticle />} />
               {/* <Route path="/workshops" element={<BookingModal />} /> */}
               <Route path="/workshops" element={<WorkshopDescription />} />
             </Routes>
-          </main>
+          </div>
         </LoginContext.Provider>
       </BrowserRouter>
     </div>

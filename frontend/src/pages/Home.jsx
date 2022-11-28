@@ -4,6 +4,8 @@ import About from "./About";
 import Workshops from "./Workshops";
 import Contact from "./Contact";
 import Blog from "./Blog";
+import Navbar from "../components/Navbar";
+import LoginForm from "../components/LoginForm";
 
 export default function Home() {
   const [isShowLogin, setIsShowLogin] = useState(false);
@@ -18,6 +20,16 @@ export default function Home() {
 
   return (
     <div>
+      <div className="bg-[url(@assets/marion.jpg)] bg-cover bg-[100%] bg-no-repeat min-h-screen w-screen">
+        <Navbar handleLoginClick={handleLoginClick} />
+
+        {!currentUser && (
+          <LoginForm
+            isShowLogin={isShowLogin}
+            setIsShowLogin={setIsShowLogin}
+          />
+        )}
+      </div>
       <div className="mt-8 mx-4 sm:mb-20 md:mb-28">
         <h2
           className="text-3xl md:text-4xl lg:text-5xl mb-12 text-center"
@@ -53,8 +65,7 @@ export default function Home() {
         <h2
           className="text-slate-200 text-3xl md:text-4xl lg:text-5xl lg:mb-[-20px] text-center pt-12"
           id="contact"
-        >
-        </h2>
+        ></h2>
         <Contact />
       </div>
     </div>
