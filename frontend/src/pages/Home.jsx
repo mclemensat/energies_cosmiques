@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import About from "./About";
 import Workshops from "./Workshops";
@@ -8,17 +8,16 @@ import Navbar from "../components/Navbar";
 import LoginForm from "../components/LoginForm";
 import AddArticleModal from "../components/AddArticleModal";
 
+import LoginContext from "@contexts/LoginContext";
+
 export default function Home() {
   const [isShowLogin, setIsShowLogin] = useState(false);
-  const [currentUser, setCurrentUser] = useState("");
 
   const handleLoginClick = () => {
     setIsShowLogin(() => !isShowLogin);
   };
 
-  const getLoginContext = () => {
-    return { currentUser, setCurrentUser };
-  };
+  const { currentUser } = useContext(LoginContext);
 
   const [showAddArticleModal, setShowAddArticleModal] = useState(false);
 
@@ -67,7 +66,7 @@ export default function Home() {
           Blog
         </h2>
         <div>
-          {getLoginContext ? (
+          {currentUser ? (
             <div>
               <button
                 onClick={handleShowModal}
