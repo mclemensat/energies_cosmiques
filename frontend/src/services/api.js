@@ -16,6 +16,10 @@ export const getPostById = async (id) => {
   return (await axios.get(`${DB_URL}/posts/${id}`)).data;
 };
 
+export const addPost = async (data) => {
+  return (await axios.post(`${DB_URL}/posts`, data)).data;
+};
+
 export const getWorkshops = async (data) => {
   return (await axios.get(`${DB_URL}/workshops`, data)).data;
 };

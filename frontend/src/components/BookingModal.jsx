@@ -21,7 +21,7 @@ export default function BookingModal({ onClick }) {
     loadData();
   }, []);
 
-  const [showModal, setShowModal] = useState(false);
+  const [showBookingModal, setShowBookingModal] = useState(false);
   const [chosenDate, onChange] = useState(new Date());
   const [participantsNumber, setParticipantsNumber] = useState(0);
 
@@ -43,7 +43,7 @@ export default function BookingModal({ onClick }) {
             <button
               type="button"
               className="absolute top-4 right-4 text-secondary hover:bg-primary hover:text-[#1d3c45] hover:scale-105 duration-200 rounded-lg text-sm p-1.5"
-              data-modal-toggle="authentication-modal"
+              data-modal-toggle="booking-modal"
               onClick={onClick}
             >
               <svg

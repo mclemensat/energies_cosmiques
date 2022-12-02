@@ -13,6 +13,11 @@ export default function Navbar({ handleLoginClick }) {
     setIsShownMobileMenu(!isShownMobileMenu);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    window.location.reload();
+  };
+
   const handleAdminClick = () => {
     handleLoginClick();
   };
@@ -65,9 +70,12 @@ export default function Navbar({ handleLoginClick }) {
                   </li>
                 )}
                 {currentUser ? (
-                  <h3 className="text-red-800">
-                    Hello {currentUser?.username}
-                  </h3>
+                  <div>
+                    <h3 className="text-red-800">
+                      Hello {currentUser?.username}
+                    </h3>
+                    <button onClick={handleSubmit}>Déconnexion</button>
+                  </div>
                 ) : (
                   " "
                 )}
@@ -89,7 +97,7 @@ export default function Navbar({ handleLoginClick }) {
                     <a
                       href="#"
                       className="h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
-                      >
+                    >
                       A propos
                     </a>
                   </li>
@@ -105,7 +113,7 @@ export default function Navbar({ handleLoginClick }) {
                     <a
                       href="#"
                       className="h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
-                      >
+                    >
                       Ateliers
                     </a>
                   </li>
@@ -121,7 +129,7 @@ export default function Navbar({ handleLoginClick }) {
                     <a
                       href="#"
                       className="h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
-                      >
+                    >
                       Blog
                     </a>
                   </li>

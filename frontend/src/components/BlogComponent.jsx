@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 export default function BlogComponent({
   post: { id, title, theme, body, imgUrl, date },
 }) {
+
   return (
     <>
       <div className="mx-auto container">
@@ -42,7 +43,7 @@ export default function BlogComponent({
                 >
                   {body}
                 </p>
-                
+
                 <Link to={`/posts?id=${id}`}>
                   <div className="w-full flex justify-end">
                     <button className="focus:outline-none focus:ring-2 ring-offset-2 focus:ring-gray-600 hover:opacity-75 mt-4 justify-end flex items-center cursor-pointer">

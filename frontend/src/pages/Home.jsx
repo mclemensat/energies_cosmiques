@@ -6,16 +6,24 @@ import Contact from "./Contact";
 import Blog from "./Blog";
 import Navbar from "../components/Navbar";
 import LoginForm from "../components/LoginForm";
+import AddArticleModal from "../components/AddArticleModal";
 
 export default function Home() {
   const [isShowLogin, setIsShowLogin] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
+
   const handleLoginClick = () => {
     setIsShowLogin(() => !isShowLogin);
   };
 
   const getLoginContext = () => {
     return { currentUser, setCurrentUser };
+  };
+
+  const [showAddArticleModal, setShowAddArticleModal] = useState(false);
+
+  const handleShowModal = () => {
+    setShowAddArticleModal(!showAddArticleModal);
   };
 
   return (
@@ -58,6 +66,25 @@ export default function Home() {
         >
           Blog
         </h2>
+        <div>
+          {getLoginContext ? (
+            <div>
+              <button
+                onClick={handleShowModal}
+                className="text-red-800 border border-red-800 p-2 rounded"
+              >
+                {" "}
+                + Ajouter un article
+              </button>
+              <AddArticleModal
+                showAddArticleModal={showAddArticleModal}
+                setShowAddArticleModal={setShowAddArticleModal}
+              />
+            </div>
+          ) : (
+            " "
+          )}
+        </div>
         <Blog />
       </div>
 

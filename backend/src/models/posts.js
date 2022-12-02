@@ -22,8 +22,22 @@ const findById = (id) => {
     .then(([results]) => results[0]);
 };
 
+const addPost = ({ theme, title, body }) => {
+  return db
+    .query("INSERT INTO posts (theme, title, body) VALUES (?, ?, ?)", [
+      theme,
+      title,
+      body,
+    ])
+    .then(([result]) => {
+      const id = result.insertId;
+      return { id, theme, title, body };
+    });
+};
+
 module.exports = {
   validate,
   getPosts,
   findById,
+  addPost,
 };

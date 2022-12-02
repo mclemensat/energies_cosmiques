@@ -39,6 +39,17 @@ router.get("/posts/:id", (req, res) => {
     });
 });
 
+router.post("/posts", (req, res) => {
+  Posts.addPost({ ...req.body })
+    .then((createdPost) => {
+      res.status(201).json(createdPost);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error adding the post");
+    });
+});
+
 router.get("/workshops", (req, res) => {
   const { workshops } = req.body;
   Workshops.getWorkshops(workshops).then((workshop) => {
