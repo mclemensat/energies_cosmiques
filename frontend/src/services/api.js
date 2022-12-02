@@ -20,6 +20,10 @@ export const addPost = async (data) => {
   return (await axios.post(`${DB_URL}/posts`, data)).data;
 };
 
+export const deletePost = async (id) => {
+  return (await axios.delete(`${DB_URL}/posts/${id}`)).data;
+}
+
 export const getWorkshops = async (data) => {
   return (await axios.get(`${DB_URL}/workshops`, data)).data;
 };

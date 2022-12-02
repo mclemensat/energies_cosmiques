@@ -35,9 +35,16 @@ const addPost = ({ theme, title, body }) => {
     });
 };
 
+const deletePost = (id) => {
+  return db
+    .query('DELETE FROM posts WHERE id = ?', [id])
+    .then(([result]) => result.affectedRows !== 0);
+};
+
 module.exports = {
   validate,
   getPosts,
   findById,
   addPost,
+  deletePost,
 };

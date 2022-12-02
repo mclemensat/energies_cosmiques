@@ -50,6 +50,18 @@ router.post("/posts", (req, res) => {
     });
 });
 
+router.delete("/posts/:id", (req, res) => {
+  Posts.deletePost(req.params.id)
+    .then((deleted) => {
+      if (deleted) res.status(200).send("Post deleted!");
+      else res.status(404).send("Post not found");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send("Error deleting a post");
+    });
+});
+
 router.get("/workshops", (req, res) => {
   const { workshops } = req.body;
   Workshops.getWorkshops(workshops).then((workshop) => {
