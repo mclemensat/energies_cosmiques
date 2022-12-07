@@ -22,21 +22,21 @@ export default function LoginForm({ setIsShowLogin, isShowLogin }) {
   };
 
   return (
-    <div className="absolute ml-[15%]">
+    <div className="absolute ml-[25%] mt-32 md:ml-4 z-10">
     <div
       className={`${
         isShowLogin ? "" : "hidden"
-      } flex justify-center z-50 w-56 border-black border-2 rounded-3xl`}
+      } flex justify-center z-50 w-56 bg-black border-black border-2 rounded-3xl`}
     >
       <div className="login-form">
         <div className="form-box solid">
           <form>
-            <h1 className="login-text text-mada text-gray-800 px-1 font-bold">
+            <h1 className="login-text text-mada text-gray-200 px-1 font-bold">
               Login: 
             </h1>
             <label
               htmlFor="user"
-              className="text-mada text-gray-800 p-1"
+              className="text-mada text-gray-200 p-1"
             >
               Username
               <br />
@@ -52,7 +52,7 @@ export default function LoginForm({ setIsShowLogin, isShowLogin }) {
             </label>
             <label
               htmlFor="password"
-              className="text-mada text-gray-800 p-1"
+              className="text-mada text-gray-200 p-1"
             >
               Password
               <br />
@@ -69,7 +69,7 @@ export default function LoginForm({ setIsShowLogin, isShowLogin }) {
             <input
               type="submit"
               value="LOGIN"
-              className="border border-black hover:scale-105 duration-200 p-1 px-2 rounded-3xl mt-3 font-bold"
+              className="text-gray-200 border border-black hover:scale-105 duration-200 p-1 px-2 rounded-3xl mt-3 font-bold ml-12"
               onClick={onLogin}
             />
           </form>

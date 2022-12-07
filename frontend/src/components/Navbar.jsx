@@ -22,9 +22,9 @@ export default function Navbar({ handleLoginClick }) {
     handleLoginClick();
   };
 
-  const handleBookingClick = () => {
-    setIsShownBookingForm(!isShownBookingForm);
-  };
+  // const handleBookingClick = () => {
+  //   setIsShownBookingForm(!isShownBookingForm);
+  // };
 
   return (
     <div>
@@ -58,7 +58,7 @@ export default function Navbar({ handleLoginClick }) {
             <div className="md:flex md:justify-center">
               <ul className="backdrop-blur-md flex flex-col pr-4 w-80 rounded-lg md:bg-[#1F2411] md:flex-row md:w-auto md:space-x-8 md:text-lg md:font-medium md:border-0 lg:text-2xl">
                 {!currentUser && (
-                  <li>
+                  <li className="relative">
                     <a
                       id="login"
                       type="button"

@@ -1,26 +1,23 @@
 import { useState } from "react";
 
 import { addPost } from "@services/api";
+import ResponseModal from "./ResponseModal";
 
 export default function AddArticleModal({
   showAddArticleModal,
-  setShowAddArticleModal,
+  handleResponseModal,
+  handleShowModal
 }) {
   const [theme, setTheme] = useState("");
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-  const handleCloseModal = () => {
-    setShowAddArticleModal(!showAddArticleModal);
-  };
-
   const createPost = async (e) => {
     try {
       await addPost({ theme, title, body });
-      alert("Article ajouté");
-      setShowAddArticleModal(!showAddArticleModal);
+      handleShowModal;
+      window.location.reload(false);
     } catch (err) {
-      e.preventDefault();
       alert(err.message);
     }
   };
@@ -37,7 +34,7 @@ export default function AddArticleModal({
             type="button"
             className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg p-1.5 ml-auto inline-flex items-center"
             data-modal-toggle="add-article-modal"
-            onClick={handleCloseModal}
+            onClick={handleShowModal}
           >
             <svg
               aria-hidden="true"
@@ -111,12 +108,13 @@ export default function AddArticleModal({
                 />
               </div>
               <button
-                onClick={createPost}
-                type="submit"
+                type="button"
                 className="w-full py-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 text-xl text-center"
+                onClick={handleResponseModal}
               >
                 Poster un article
               </button>
+              <ResponseModal createPost={createPost} text="Article ajouté"/>
             </form>
           </div>
         </div>

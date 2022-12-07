@@ -6,20 +6,18 @@ import Contact from "./Contact";
 import Blog from "./Blog";
 import Navbar from "../components/Navbar";
 import LoginForm from "../components/LoginForm";
-import AddArticleModal from "../components/AddArticleModal";
+import AddArticleModal from "../modals/AddArticleModal";
 
 import LoginContext from "@contexts/LoginContext";
 
 export default function Home() {
+  const { currentUser } = useContext(LoginContext);
   const [isShowLogin, setIsShowLogin] = useState(false);
+  const [showAddArticleModal, setShowAddArticleModal] = useState(false);
 
   const handleLoginClick = () => {
     setIsShowLogin(() => !isShowLogin);
   };
-
-  const { currentUser } = useContext(LoginContext);
-
-  const [showAddArticleModal, setShowAddArticleModal] = useState(false);
 
   const handleShowModal = () => {
     setShowAddArticleModal(!showAddArticleModal);
@@ -28,18 +26,17 @@ export default function Home() {
   return (
     <div>
       <div className="bg-[url(@assets/marion.jpg)] bg-cover bg-[100%] bg-no-repeat min-h-screen w-screen">
-        <Navbar handleLoginClick={handleLoginClick} />
-
         {!currentUser && (
           <LoginForm
             isShowLogin={isShowLogin}
             setIsShowLogin={setIsShowLogin}
           />
         )}
+        <Navbar handleLoginClick={handleLoginClick} />
       </div>
-      <div className="mt-8 mx-4 sm:mb-20 md:mb-28">
+      <div className="mt-12 mx-4 sm:mb-20 md:mb-28">
         <h2
-          className="text-3xl md:text-4xl lg:text-5xl mb-12 text-center"
+          className="text-3xl md:text-4xl lg:text-5xl mb-20 text-center"
           id="about"
         >
           A propos
@@ -47,7 +44,7 @@ export default function Home() {
         <About />
       </div>
 
-      <div className="min-h-screen bg-[#F0EEEC] px-12">
+      <div className="bg-[#F0EEEC] px-12 mb-8">
         <h2
           className="text-3xl md:text-4xl lg:text-5xl pt-10 mb-12 text-center"
           id="workshops"
@@ -58,7 +55,7 @@ export default function Home() {
         <Workshops />
       </div>
 
-      <div className="min-h-screen mx-4">
+      <div className="min-h-screen mt-12 mx-4">
         <h2
           className="text-3xl md:text-4xl lg:text-5xl mb-12 text-center"
           id="blog"
@@ -77,14 +74,15 @@ export default function Home() {
               </button>
               <AddArticleModal
                 showAddArticleModal={showAddArticleModal}
-                setShowAddArticleModal={setShowAddArticleModal}
+                handleShowModal={handleShowModal}
               />
             </div>
           ) : (
             " "
           )}
         </div>
-        <Blog />
+        <Blog
+        />
       </div>
 
       <div className="bg-[url(@assets/contact.jpg)] bg-cover min-h-screen w-screen">

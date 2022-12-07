@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Link } from "react-router-dom";
 
-import BookingModal from "./BookingModal";
+import BookingModal from "../modals/BookingModal";
 
 export default function WorkshopsCards({
   workshop: { id, title, description, price, duration, image },
@@ -12,7 +12,7 @@ export default function WorkshopsCards({
   return (
     <div
       key={id}
-      className="max-w-lg lg:max-w-md bg-white rounded-lg border border-gray-200 shadow-md mt-8 mb-8"
+      className="max-w-lg lg:max-w-md bg-white rounded-lg border border-gray-200 shadow-md mt-8 mb-24"
     >
       <a href="#">
         <img className="rounded-t-lg w-full h-64" src={image} alt="" />
