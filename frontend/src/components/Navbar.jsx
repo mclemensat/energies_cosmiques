@@ -159,8 +159,8 @@ export default function Navbar({ handleLoginClick }) {
           </div>
         </div>
       </nav>
-      <div className="">
-        <h1 className="text-5xl text-slate-300 mt-[20%] ml-[55%] md:text-6xl md:mt-[10%] md:ml-[15%]">
+      <div>
+        <h1 className="w-fit backdrop-blur-sm text-5xl text-slate-300 mt-[20%] ml-[55%] md:text-6xl md:mt-[10%] md:ml-[15%]">
           Energies cosmiques
         </h1>
         <div className="text-2xl mt-10 ml-[55%] md:ml-[20%]">

@@ -13,7 +13,7 @@ const validate = (data, forCreation = true) => {
 };
 
 const getPosts = () => {
-  return db.query("SELECT * FROM posts").then(([results]) => results);
+  return db.query("SELECT * FROM posts ORDER BY date DESC").then(([results]) => results);
 };
 
 const findById = (id) => {
