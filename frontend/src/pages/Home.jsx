@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar";
 import LoginForm from "../components/LoginForm";
 import AddArticleModal from "../modals/AddArticleModal";
 
-import LoginContext from "@contexts/LoginContext";
+import { LoginContext } from "@contexts/LoginContextProvider";
 
 export default function Home() {
   const { currentUser } = useContext(LoginContext);

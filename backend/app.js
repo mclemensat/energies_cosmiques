@@ -1,6 +1,6 @@
 const router = require("./src/router");
 const express = require("express");
-const session = require('express-session');
+const session = require("express-session");
 const cors = require("cors");
 
 const app = express();
@@ -14,11 +14,18 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
-}));
+app.use(
+  session({
+    name: "energies_cosmiques",
+    secret: "supersecret",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+  })
+);
 
 app.use(express.json());
 

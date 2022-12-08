@@ -1,16 +1,11 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@assets/*": [
-          "frontend/src/assets/*"
-        ],
-        "@components/*": [
-          "frontend/src/components/*"
-        ],
-        "@pages/*": [
-          "frontend/src/pages/*"
-        ]
-      }
+  "compilerOptions": {
+    "target": "es6",
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["frontend/src/assets/*"],
+      "@components/*": ["frontend/src/components/*"],
+      "@pages/*": ["frontend/src/pages/*"]
     }
   }
+}

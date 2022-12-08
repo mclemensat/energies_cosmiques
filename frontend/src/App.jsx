@@ -1,32 +1,26 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import Home from "@pages/Home";
-
-import LoginContext from "@contexts/LoginContext";
 
 import "./App.css";
 import BlogArticle from "./pages/BlogArticle";
 // import BookingModal from "./components/BookingModal";
 import WorkshopDescription from "./pages/WorkshopDescription";
 
+import LoginContextProvider from "@contexts/LoginContextProvider";
+
 function App() {
   const [isShowLogin, setIsShowLogin] = useState(false);
-
-  const [currentUser, setCurrentUser] = useState("");
 
   const handleLoginClick = () => {
     setIsShowLogin(() => !isShowLogin);
   };
 
-  const getLoginContext = () => {
-    return { currentUser, setCurrentUser };
-  };
-
   return (
     <div className="App">
       <BrowserRouter>
-        <LoginContext.Provider value={getLoginContext()}>
+        <LoginContextProvider>
           <div>
             <Routes>
               <Route
@@ -34,7 +28,6 @@ function App() {
                 element={
                   <Home
                     handleLoginClick={handleLoginClick}
-                    currentUser={currentUser}
                   />
                 }
               />
@@ -43,7 +36,7 @@ function App() {
               <Route path="/workshops" element={<WorkshopDescription />} />
             </Routes>
           </div>
-        </LoginContext.Provider>
+        </LoginContextProvider>
       </BrowserRouter>
     </div>
   );

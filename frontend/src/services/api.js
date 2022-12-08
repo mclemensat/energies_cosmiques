@@ -8,6 +8,18 @@ export const login = async (data) => {
   return (await axios.post(`${DB_URL}/login`, data)).data;
 };
 
+export const fetchMe = async (data) => {
+  try {
+    return (await axios.get(`${DB_URL}/me`, data)).data;
+  } catch (err) {
+    return null;
+  }
+};
+
+export const logout = async () => {
+  return (await axios.get(`${DB_URL}/logout`));
+}
+
 export const getPosts = async (data) => {
   return (await axios.get(`${DB_URL}/posts`, data)).data;
 };
@@ -22,7 +34,7 @@ export const addPost = async (data) => {
 
 export const deletePost = async (id) => {
   return (await axios.delete(`${DB_URL}/posts/${id}`)).data;
-}
+};
 
 export const getWorkshops = async (data) => {
   return (await axios.get(`${DB_URL}/workshops`, data)).data;

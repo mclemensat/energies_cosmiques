@@ -2,9 +2,10 @@ import { useState, useContext } from "react";
 
 import { Link } from "react-router-dom";
 
-import LoginContext from "@contexts/LoginContext";
-import { deletePost } from "@services/api";
 import Confirmationmodal from "../modals/ConfirmationModal";
+
+import { LoginContext } from "@contexts/LoginContextProvider";
+import { deletePost } from "@services/api";
 
 export default function BlogComponent({ post }) {
   const { currentUser } = useContext(LoginContext);

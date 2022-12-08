@@ -27,7 +27,7 @@ export default function Confirmationmodal({
         } backdrop-blur-[3px] overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 justify-center items-center flex`}
       >
         <div className="relative px-4 min-h-screen md:flex md:items-center md:justify-center">
-          <div className="bg-white rounded-lg border-2 border-black md:max-w-md md:mx-auto p-4 fixed inset-x-0 bottom-0 z-50 mb-4 mx-4 md:relative">
+          <div className="bg-white rounded-lg border-2 border-black md:max-w-md md:mx-auto p-6 fixed inset-x-0 bottom-0 z-50 mb-4 mx-4 md:relative">
             <div className="md:flex items-center">
               <i className="fa-solid fa-circle-exclamation text-6xl ml-2 text-red-600"></i>
               <div className="mt-4 md:mt-0 md:ml-6 text-center md:text-left">

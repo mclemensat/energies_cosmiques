@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import { Link } from "react-scroll";
 
-import LoginContext from "@contexts/LoginContext";
+import { logout } from "@services/api";
+
+import { LoginContext } from "@contexts/LoginContextProvider";
 // import BookingModal from "../components/BookingModal";
 
 export default function Navbar({ handleLoginClick }) {
-  const { currentUser } = useContext(LoginContext);
+  const { currentUser, setCurrentUser } = useContext(LoginContext);
   const [isShownMobileMenu, setIsShownMobileMenu] = useState(false);
   const [isShownBookingForm, setIsShownBookingForm] = useState(false);
 
@@ -13,9 +15,9 @@ export default function Navbar({ handleLoginClick }) {
     setIsShownMobileMenu(!isShownMobileMenu);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    window.location.reload();
+  const onLogout = async () => {
+    setCurrentUser(await logout());
+    window.location.reload(false);
   };
 
   const handleAdminClick = () => {
@@ -74,7 +76,7 @@ export default function Navbar({ handleLoginClick }) {
                     <h3 className="text-red-800">
                       Hello {currentUser?.username}
                     </h3>
-                    <button onClick={handleSubmit}>Déconnexion</button>
+                    <button onClick={onLogout}>Déconnexion</button>
                   </div>
                 ) : (
                   " "

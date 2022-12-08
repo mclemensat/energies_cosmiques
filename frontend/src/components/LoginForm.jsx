@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 
 import { login } from "@services/api";
-import LoginContext from "@contexts/LoginContext";
+import { LoginContext } from "@contexts/LoginContextProvider";
 
 export default function LoginForm({ setIsShowLogin, isShowLogin }) {
   const [username, setUsername] = useState("");
@@ -31,19 +31,19 @@ export default function LoginForm({ setIsShowLogin, isShowLogin }) {
       <div className="login-form">
         <div className="form-box solid">
           <form>
-            <h1 className="login-text text-mada text-gray-200 px-1 font-bold">
+            <h1 className="text-slate-200 px-1 font-bold">
               Login: 
             </h1>
             <label
               htmlFor="user"
-              className="text-mada text-gray-200 p-1"
+              className="text-slate-200 p-1"
             >
               Username
               <br />
               <input
                 type="text"
                 name="username"
-                className="pl-2 border border-black"
+                className="pl-2 text-black"
                 value={username}
                 onChange={({ target }) => setUsername(target.value)}
                 placeholder="Your name"
@@ -52,14 +52,14 @@ export default function LoginForm({ setIsShowLogin, isShowLogin }) {
             </label>
             <label
               htmlFor="password"
-              className="text-mada text-gray-200 p-1"
+              className="text-slate-200 p-1"
             >
               Password
               <br />
               <input
                 type="password"
                 name="password"
-                className="pl-2 border border-black"
+                className="pl-2 text-black"
                 value={password}
                 onChange={({ target }) => setPassword(target.value)}
                 placeholder="Your password"

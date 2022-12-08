@@ -5,14 +5,31 @@ const User = require("./models/user");
 const Posts = require("./models/posts");
 const Workshops = require("./models/workshops");
 
+router.get("/me", (req, res) => {
+  const user = req.session.user;
+
+  if (!user) {
+    return res.sendStatus(401);
+  }
+
+  res.send(user);
+});
+
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
   User.findByUser(username, password).then((user) => {
     if (!user) res.status(401).send("No user");
     else {
+      req.session.user = user;
+
       res.send(user);
     }
   });
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.status(200).send("Logged out")
 });
 
 router.get("/posts", (req, res) => {

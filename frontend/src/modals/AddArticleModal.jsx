@@ -1,12 +1,10 @@
 import { useState } from "react";
 
 import { addPost } from "@services/api";
-import ResponseModal from "./ResponseModal";
 
 export default function AddArticleModal({
   showAddArticleModal,
-  handleResponseModal,
-  handleShowModal
+  handleShowModal,
 }) {
   const [theme, setTheme] = useState("");
   const [title, setTitle] = useState("");
@@ -110,11 +108,10 @@ export default function AddArticleModal({
               <button
                 type="button"
                 className="w-full py-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 text-xl text-center"
-                onClick={handleResponseModal}
+                onClick={createPost}
               >
                 Poster un article
               </button>
-              <ResponseModal createPost={createPost} text="Article ajouté"/>
             </form>
           </div>
         </div>
