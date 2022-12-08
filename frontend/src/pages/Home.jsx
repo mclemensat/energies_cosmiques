@@ -67,10 +67,10 @@ export default function Home() {
             <div>
               <button
                 onClick={handleShowModal}
-                className="text-red-800 border border-red-800 p-2 rounded"
+                className="ml-4 text-lg bg-[#F0EEEC] text-gray-500 border border-gray-500 py-3 p-4 rounded-lg hover:bg-gray-400 hover:text-gray-200"
               >
                 {" "}
-                + Ajouter un article
+                <i class="fa-regular fa-plus"></i> Ajouter un article
               </button>
               <AddArticleModal
                 showAddArticleModal={showAddArticleModal}

@@ -14,7 +14,7 @@ export default function BlogComponent({ post }) {
 
   const onDelete = async (post) => {
     await deletePost(post.id);
-    setShowConformationModal(!showConfirmationModal)
+    setShowConformationModal(!showConfirmationModal);
     window.location.reload(false);
   };
 
@@ -32,13 +32,27 @@ export default function BlogComponent({ post }) {
               {currentUser ? (
                 <div>
                   <button
-                    className="text-red-800 border border-red-800 p-2 rounded"
-                    // onClick={() => onDelete(post)}
+                    type="button"
                     onClick={handleShowConfirmationModal}
+                    className="absolute m-2 bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100"
                   >
-                    {" "}
-                    X
+                    <svg
+                      className="h-6 w-6"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
                   </button>
+
                   <Confirmationmodal
                     showConfirmationModal={showConfirmationModal}
                     setShowConformationModal={setShowConformationModal}

@@ -60,23 +60,24 @@ export default function Navbar({ handleLoginClick }) {
             <div className="md:flex md:justify-center">
               <ul className="backdrop-blur-md flex flex-col pr-4 w-80 rounded-lg md:bg-[#1F2411] md:flex-row md:w-auto md:space-x-8 md:text-lg md:font-medium md:border-0 lg:text-2xl">
                 {!currentUser && (
-                  <li className="relative">
-                    <a
-                      id="login"
+                  <div>
+                    <button
                       type="button"
-                      className="cursor-pointer h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pr-4 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8"
+                      className="h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8 hover:text-slate-600"
                       onClick={handleAdminClick}
                     >
-                      Admin
-                    </a>
-                  </li>
+                      <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                    </button>
+                  </div>
                 )}
                 {currentUser ? (
                   <div>
-                    <h3 className="text-red-800">
-                      Hello {currentUser?.username}
-                    </h3>
-                    <button onClick={onLogout}>Déconnexion</button>
+                    <button
+                      className="h-16 text-center block border-x-[3px] border-t-[3px] border-[#1F2411] py-3 pl-3 text-slate-100 rounded hover:bg-[#1F2411] md:border-0 md:px-8 hover:text-slate-600"
+                      onClick={onLogout}
+                    >
+                      <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
                   </div>
                 ) : (
                   " "
